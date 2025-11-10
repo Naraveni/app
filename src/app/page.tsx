@@ -75,29 +75,29 @@ export default function TransitPass() {
         <div className="absolute inset-0 bg-white z-0"></div>
 
         {/* Circle + logo */}
-        <div className="relative inline-block mb-16 mt-2 z-10">
+        <div className="relative inline-block mb-16 mt-2 z-10 bg-white">
           {/* Base white mask */}
           <div className="absolute top-1/2 left-1/2 w-[250px] sm:w-[300px] h-[250px] sm:h-[300px] bg-white rounded-full -translate-x-1/2 -translate-y-1/2 z-0"></div>
 
           {/* Orange circles (solid + pulse out of sync) */}
           <div
-            className="absolute top-1/2 left-1/2 w-[150px] sm:w-[180px] h-[150px] sm:h-[180px] bg-[#b97714] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-[1]"
+            className="absolute top-1/2 left-1/2 w-[150px] sm:w-[180px] h-[150px] sm:h-[180px] bg-[#b06d08] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-[1]"
             style={{
-              animationDuration: "1.3s",
+              animationDuration: "1.5s",
               animationTimingFunction: "ease-in-out",
             }}
           ></div>
           <div
-            className="absolute top-1/2 left-1/2 w-[180px] sm:w-[210px] h-[180px] sm:h-[210px] bg-[#c6841a] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-[0]"
+            className="absolute top-1/2 left-1/2 w-[180px] sm:w-[210px] h-[180px] sm:h-[210px] bg-[#b06d08] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-[0]"
             style={{
-              animationDelay: "0.5s",
-              animationDuration: "1.3s",
+              animationDelay: "0s",
+              animationDuration: "1.5s",
               animationTimingFunction: "ease-in-out",
             }}
           ></div>
 
           {/* Logo */}
-          <div className="relative w-[130px] sm:w-[160px] h-[130px] sm:h-[160px] rounded-full border-[5px] border-[#c6841a] bg-white flex items-center justify-center z-10">
+          <div className="relative w-[110px] sm:w-[150px] h-[110px] sm:h-[150px] rounded-full  border-[#b06d08] bg-white flex items-center justify-center z-10">
             <img
               src={logo.src}
               alt="CTtransit"
