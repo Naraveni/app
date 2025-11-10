@@ -6,6 +6,7 @@ export default function TransitPass() {
   const [time, setTime] = useState("");
   const [expiry, setExpiry] = useState("");
 
+  // Clock updater
   useEffect(() => {
     const updateClock = () => {
       const now = new Date();
@@ -22,6 +23,7 @@ export default function TransitPass() {
     return () => clearInterval(interval);
   }, []);
 
+  // Expiry time (30 minutes later)
   useEffect(() => {
     const now = new Date();
     now.setMinutes(now.getMinutes() + 30);
@@ -36,7 +38,7 @@ export default function TransitPass() {
     setExpiry(`Expires ${month} ${day}, ${year}, ${timeString}`);
   }, []);
 
-  // Fullscreen toggle for mobile (double tap hides browser bars)
+  // Fullscreen toggle (mobile double-tap)
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch((err) => {
@@ -62,7 +64,7 @@ export default function TransitPass() {
             Show operator your ticket
           </span>
         </div>
-        <div className="flex justify-center items-center border border-gray-300 rounded-full text-base w-6 h-6 select-none">
+        <div className="flex justify-center items-center border border-gray-300 rounded-full text-sm w-6 h-6 select-none">
           ×
         </div>
       </header>
@@ -72,29 +74,30 @@ export default function TransitPass() {
         {/* White background to avoid orange tint */}
         <div className="absolute inset-0 bg-white z-0"></div>
 
-        <div className="relative inline-block mb-12 z-10 mt-1">
+        {/* Circle + logo */}
+        <div className="relative inline-block mb-16 mt-2 z-10">
           {/* Base white mask */}
-          <div className="absolute top-1/2 left-1/2 w-[65vw] h-[65vw] bg-white rounded-full -translate-x-1/2 -translate-y-1/2 z-0"></div>
+          <div className="absolute top-1/2 left-1/2 w-[250px] sm:w-[300px] h-[250px] sm:h-[300px] bg-white rounded-full -translate-x-1/2 -translate-y-1/2 z-0"></div>
 
-          {/* Two solid orange circles with faster, out-of-sync pulse */}
+          {/* Orange circles (solid + pulse out of sync) */}
           <div
-            className="absolute top-1/2 left-1/2 w-[38vw] h-[38vw] bg-[#b97714] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-1"
+            className="absolute top-1/2 left-1/2 w-[150px] sm:w-[180px] h-[150px] sm:h-[180px] bg-[#b97714] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-[1]"
             style={{
-              animationDuration: "1.5s",
+              animationDuration: "1.3s",
               animationTimingFunction: "ease-in-out",
             }}
           ></div>
           <div
-            className="absolute top-1/2 left-1/2 w-[44vw] h-[44vw] bg-[#c6841a] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-0"
+            className="absolute top-1/2 left-1/2 w-[180px] sm:w-[210px] h-[180px] sm:h-[210px] bg-[#c6841a] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse z-[0]"
             style={{
               animationDelay: "0.5s",
-              animationDuration: "1.5s",
+              animationDuration: "1.3s",
               animationTimingFunction: "ease-in-out",
             }}
           ></div>
 
-          {/* Logo circle */}
-          <div className="relative w-[32vw] max-w-[190px] h-[32vw] max-h-[190px] rounded-full border-[#c6841a] bg-white flex items-center justify-center z-10">
+          {/* Logo */}
+          <div className="relative w-[130px] sm:w-[160px] h-[130px] sm:h-[160px] rounded-full border-[5px] border-[#c6841a] bg-white flex items-center justify-center z-10">
             <img
               src={logo.src}
               alt="CTtransit"
@@ -104,19 +107,23 @@ export default function TransitPass() {
         </div>
 
         {/* Clock */}
-        <div className="text-[14vw] font-bold tracking-tight pt-10 z-10 mb-6">
+        <div className="text-6xl sm:text-7xl font-bold tracking-tight pt-4 z-10 mb-8">
           {time}
         </div>
       </main>
 
       {/* Card */}
-      <div className="bg-white shadow-md rounded-lg p-3 w-[90%] max-w-md text-left mb-24 z-10">
-        <h3 className="text-base font-bold mb-2 text-gray-800">Adult 2 Hour</h3>
-        <p className="text-sm text-gray-700 mb-3 leading-snug">
+      <div className="bg-white shadow-md rounded-lg p-4 w-[92%] sm:w-[85%] max-w-md text-left mb-16 z-10">
+        <h3 className="text-base sm:text-lg font-bold mb-2 text-gray-800">
+          Adult 2 Hour
+        </h3>
+        <p className="text-sm sm:text-base text-gray-700 mb-3 leading-snug">
           Hartford, New Haven, Stamford, Bristol, Meriden, New Britain,
           Waterford, and Waterbury
         </p>
-        <p className="text-sm text-gray-800 mt-8 font-bold mb-3">{expiry}</p>
+        <p className="text-sm sm:text-base text-gray-800 mt-6 font-bold mb-3">
+          {expiry}
+        </p>
       </div>
     </div>
   );
